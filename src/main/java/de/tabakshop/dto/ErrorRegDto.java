@@ -16,4 +16,8 @@ import lombok.ToString;
 @Builder
 public class ErrorRegDto {
     private String message;
+    private int status;
+    private String timestamp;
+    private String error;
+    private String path;
 }
