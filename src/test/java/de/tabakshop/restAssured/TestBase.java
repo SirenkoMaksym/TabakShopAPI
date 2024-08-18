@@ -20,6 +20,6 @@ public class TestBase {
     @BeforeMethod
     public void init(){
         RestAssured.baseURI="https://smoke-shop-68y5q.ondigitalocean.app/api";
-        RestAssured.basePath="author";
+        RestAssured.basePath="";
     }
 }

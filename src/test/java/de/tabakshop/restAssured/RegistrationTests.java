@@ -26,7 +26,7 @@ public class RegistrationTests extends TestBase {
         RegResponseDto dto = given()
                 .contentType("application/json")
                 .body(requestDto)
-                .post("reg")
+                .post("author/reg")
                 .then()
                 .assertThat().statusCode(200)
                 .extract().response().as(RegResponseDto.class)
@@ -42,7 +42,7 @@ public class RegistrationTests extends TestBase {
                         .email("test34@gmail.com")
                         .password("Password123!")
                         .isAdult(true).build())
-                .post("reg")
+                .post("author/reg")
                 .then()
                 .assertThat().statusCode(409)
         ;
@@ -55,7 +55,7 @@ public class RegistrationTests extends TestBase {
                         .email("test34gmail.com")
                         .password("Password123!")
                         .isAdult(true).build())
-                .post("reg")
+                .post("author/reg")
                 .then()
                 .assertThat().statusCode(400)
                 .assertThat().body("message", equalTo("Поле, email, содержит неверный электронный адрес. Пример: example-email@example.com"))
@@ -69,7 +69,7 @@ public class RegistrationTests extends TestBase {
                         .email("test34@gmail.com")
                         .password("")
                         .isAdult(true).build())
-                .post("reg")
+                .post("author/reg")
                 .then()
                 .assertThat().statusCode(400)
                 .assertThat().body("message", equalTo("Поле, password, нужно заполнить"))
@@ -83,10 +83,11 @@ public class RegistrationTests extends TestBase {
                         .email("test3@gmail.com")
                         .password("Password123!")
                         .build())
-                .post("reg")
+                .post("author/reg")
                 .then()
                 .assertThat().statusCode(400)
                 .assertThat().body("message", equalTo("Подтвердите, что вам уже 18 лет"))
+
         ;
     }
 }
